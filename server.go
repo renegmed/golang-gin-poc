@@ -55,9 +55,9 @@ func main() {
 		viewRoutes.GET("/videos", videoController.ShowAll)
 	}
 
-	// By default, Elastic Beanstalk configures the nginx proxy to forward
-	// requests to our application on port 5000
-	port := os.Getenv("PORT") // We can setup this env variable from the EB console
+	// We can setup this env variable from the EB console
+	port := os.Getenv("PORT")
+	// Elastic Beanstalk forwards requests to port 5000
 	if port == "" {
 		port = "5000"
 	}
