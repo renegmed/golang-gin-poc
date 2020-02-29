@@ -17,7 +17,7 @@ var (
 )
 
 func setupLogOutput() {
-	f, _ := os.Create("/var/log/golang/gin.log")
+	f, _ := os.Create("/var/log/golang/gin-app.log")
 	gin.DefaultWriter = io.MultiWriter(f, os.Stdout)
 }
 
