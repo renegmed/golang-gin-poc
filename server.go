@@ -33,6 +33,7 @@ func main() {
 
 	server.LoadHTMLGlob("templates/*.html")
 
+	// Basic Authorization Middleware applies to "/api" only.
 	apiRoutes := server.Group("/api", middlewares.BasicAuth())
 	{
 		apiRoutes.GET("/videos", func(ctx *gin.Context) {
@@ -50,6 +51,7 @@ func main() {
 		})
 	}
 
+	// The "/view" endpoints are public (no Authorization required)
 	viewRoutes := server.Group("/view")
 	{
 		viewRoutes.GET("/videos", videoController.ShowAll)
