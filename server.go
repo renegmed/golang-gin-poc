@@ -17,7 +17,7 @@ var (
 )
 
 func setupLogOutput() {
-	f, _ := os.Create("gin.log")
+	f, _ := os.Create("/var/log/golang/gin.log")
 	gin.DefaultWriter = io.MultiWriter(f, os.Stdout)
 }
 
@@ -55,5 +55,11 @@ func main() {
 		viewRoutes.GET("/videos", videoController.ShowAll)
 	}
 
-	server.Run(":8080")
+	// By default, Elastic Beanstalk configures the nginx proxy to forward
+	// requests to our application on port 5000
+	port := os.Getenv("PORT") // We can setup this env variable from the EB console
+	if port == "" {
+		port = "5000"
+	}
+	server.Run(":" + port)
 }
