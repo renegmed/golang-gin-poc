@@ -33,7 +33,7 @@ func main() {
 
 	server.LoadHTMLGlob("templates/*.html")
 
-	apiRoutes := server.Group("/api")
+	apiRoutes := server.Group("/api", middlewares.BasicAuth())
 	{
 		apiRoutes.GET("/videos", func(ctx *gin.Context) {
 			ctx.JSON(200, videoController.FindAll())
