@@ -1,6 +1,7 @@
 ## Golang Gin Framework - Video API (POC)
 
 ## Go Module Init
+
 ```bash
 go mod init gitlab.com/pragmaticreviews/golang-gin-poc
 ```
@@ -23,3 +24,29 @@ go run server.go
 # 6.- From the application directory run:
 # 6.a.- eb init
 # 6.b.- eb create --single
+
+
+
+## Deploy on AWS ElasticBeanstalk with Docker
+
+## Build the docker image
+
+```bash
+docker build --tag pragmaticreviews/golang-gin .
+```
+
+## Run the container locally
+
+```bash
+docker run -p 5000:5000 pragmaticreviews/golang-gin
+```
+
+## Push the image to Docker Hub (you need a Docker Hub Account)
+
+```bash
+docker login
+```
+
+```bash
+docker push pragmaticreviews/golang-gin
+```
