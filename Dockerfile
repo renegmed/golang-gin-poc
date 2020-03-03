@@ -25,6 +25,9 @@ ENV PORT 5000
 # Build the app
 RUN go build
 
+# Remove source files
+RUN find . -name "*.go" -type f -delete
+
 # Make port 5000 available to the world outside this container
 EXPOSE 5000
 
