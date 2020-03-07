@@ -29,7 +29,7 @@ RUN go build
 RUN find . -name "*.go" -type f -delete
 
 # Make port 5000 available to the world outside this container
-EXPOSE 5000
+EXPOSE $PORT
 
 # Run the app
 CMD ["./golang-gin-poc"]
