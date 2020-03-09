@@ -11,5 +11,4 @@ test:
   stage: test
   image: golang:1.13
   script:
-    - go get -d -v
     - go test service/*.go
