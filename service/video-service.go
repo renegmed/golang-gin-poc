@@ -2,7 +2,7 @@ package service
 
 import "gitlab.com/pragmaticreviews/golang-gin-poc/entity"
 
-type Video Service interface {
+type VideoService interface {
 	Save(entity.Video) entity.Video
 	FindAll() []entity.Video
 }
