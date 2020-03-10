@@ -1,3 +1,5 @@
+// +heroku install .
+
 module gitlab.com/pragmaticreviews/golang-gin-poc
 
 go 1.12
