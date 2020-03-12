@@ -5,14 +5,14 @@ stages:
 
 build:
   stage: compile
-  image: golang:1.13
+  image: golang:latest
   script:
     - go get -d -v
     - go build -o bin/golang-gin-poc -v .
 
 test:
   stage: test
-  image: golang:1.13
+  image: golang:latest
   script:
     - go test service/*.go
 
