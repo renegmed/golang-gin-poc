@@ -16,7 +16,7 @@ test:
   script:
     - go test service/*.go
 
-development:
+staging:
   stage: deploy
   script:
     - apt-get update -qy
@@ -24,7 +24,7 @@ development:
     - gem install dpl
     - dpl --provider=heroku --app=pragmatic-video-app --api-key=$HEROKU_API_KEY
   environment:
-    name: Development
+    name: Staging
     url: https://pragmatic-video-app.herokuapp.com/
   only:
     - ci-cd
