@@ -41,7 +41,7 @@ func main() {
 		}
 	})
 
-	// Basic Authorization Middleware applies to "/api" only.
+	// JWT Authorization Middleware applies to "/api" only.
 	apiRoutes := server.Group("/api", middlewares.AuthorizeJWT())
 	{
 		apiRoutes.GET("/videos", func(ctx *gin.Context) {
