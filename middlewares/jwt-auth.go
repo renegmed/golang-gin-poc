@@ -8,13 +8,12 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// AuthorizeJWT validates the token from the http request, returning a 401 if it's not valid
 func AuthorizeJWT() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		const BEARER_SCHEMA = "Bearer "
 		authHeader := c.GetHeader("Authorization")
 		tokenString := authHeader[len(BEARER_SCHEMA):]
-
-		fmt.Println(tokenString)
 
 		token, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
 			// Signing method validation
