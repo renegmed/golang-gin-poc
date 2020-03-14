@@ -6,7 +6,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"gitlab.com/pragmaticreviews/golang-gin-poc/entity"
 	"gitlab.com/pragmaticreviews/golang-gin-poc/service"
-	"gitlab.com/pragmaticreviews/golang-gin-poc/validators"
 	"gopkg.in/go-playground/validator.v9"
 )
 
@@ -24,7 +23,6 @@ var validate *validator.Validate
 
 func New(service service.VideoService) VideoController {
 	validate = validator.New()
-	validate.RegisterValidation("is-cool", validators.ValidateCoolTitle)
 	return &controller{
 		service: service,
 	}

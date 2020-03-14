@@ -1,7 +1,6 @@
 package main
 
 import (
-	"io"
 	"net/http"
 	"os"
 
@@ -12,29 +11,38 @@ import (
 )
 
 var (
-	videoService    service.VideoService       = service.New()
-	videoController controller.VideoController = controller.New(videoService)
-)
+	videoService service.VideoService = service.New()
+	loginService service.LoginService = service.NewLoginService()
+	jwtService   service.JWTService   = service.NewJWTService()
 
-func setupLogOutput() {
-	f, _ := os.Create("/var/log/golang/gin-app.log")
-	gin.DefaultWriter = io.MultiWriter(f, os.Stdout)
-}
+	videoController controller.VideoController = controller.New(videoService)
+	loginController controller.LoginController = controller.NewLoginController(loginService, jwtService)
+)
 
 func main() {
 
-	setupLogOutput()
-
 	server := gin.New()
 
-	server.Use(gin.Recovery(), middlewares.Logger())
+	server.Use(gin.Recovery(), gin.Logger())
 
 	server.Static("/css", "./templates/css")
 
 	server.LoadHTMLGlob("templates/*.html")
 
+	// Login Endpoint
+	server.POST("/login", func(ctx *gin.Context) {
+		token := loginController.Login(ctx)
+		if token != "" {
+			ctx.JSON(http.StatusOK, gin.H{
+				"token": token,
+			})
+		} else {
+			ctx.JSON(http.StatusUnauthorized, nil)
+		}
+	})
+
 	// Basic Authorization Middleware applies to "/api" only.
-	apiRoutes := server.Group("/api", middlewares.BasicAuth())
+	apiRoutes := server.Group("/api", middlewares.AuthorizeJWT())
 	{
 		apiRoutes.GET("/videos", func(ctx *gin.Context) {
 			ctx.JSON(200, videoController.FindAll())
