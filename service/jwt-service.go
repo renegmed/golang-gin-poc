@@ -10,7 +10,7 @@ import (
 
 type JWTService interface {
 	GenerateToken(name string, admin bool) string
-	ParseToken(tokenString string) (*jwt.Token, error)
+	ValidateToken(tokenString string) (*jwt.Token, error)
 }
 
 // jwtCustomClaims are custom claims extending default ones.
@@ -64,7 +64,7 @@ func (jwtSrv *jwtService) GenerateToken(username string, admin bool) string {
 	return t
 }
 
-func (jwtSrv *jwtService) ParseToken(tokenString string) (*jwt.Token, error) {
+func (jwtSrv *jwtService) ValidateToken(tokenString string) (*jwt.Token, error) {
 	return jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
 		// Signing method validation
 		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
