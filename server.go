@@ -29,7 +29,7 @@ func main() {
 
 	server.LoadHTMLGlob("templates/*.html")
 
-	// Login Endpoint
+	// Login Endpoint: Authentication + Token creation
 	server.POST("/login", func(ctx *gin.Context) {
 		token := loginController.Login(ctx)
 		if token != "" {

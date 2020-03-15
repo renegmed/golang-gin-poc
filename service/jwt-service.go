@@ -2,6 +2,7 @@ package service
 
 import (
 	"fmt"
+	"os"
 	"time"
 
 	"github.com/dgrijalva/jwt-go"
@@ -26,9 +27,17 @@ type jwtService struct {
 
 func NewJWTService() JWTService {
 	return &jwtService{
-		secretKey: "secret", //os.Getenv("JWT_SECRET"),
+		secretKey: getSecretKey(),
 		issuer:    "pragmaticreviews.com",
 	}
+}
+
+func getSecretKey() string {
+	secret := os.Getenv("JWT_SECRET")
+	if secret == "" {
+		secret = "secret"
+	}
+	return secret
 }
 
 func (jwtSrv *jwtService) GenerateToken(username string, admin bool) string {
