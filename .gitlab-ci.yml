@@ -27,4 +27,4 @@ staging:
     name: Staging
     url: https://pragmatic-video-app.herokuapp.com/
   only:
-    - jwt
+    - gorm
