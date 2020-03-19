@@ -7,9 +7,9 @@ import (
 )
 
 type VideoRepository interface {
-	Save(video entity.Video) error
-	Update(video entity.Video) error
-	Delete(video entity.Video) error
+	Save(video entity.Video)
+	Update(video entity.Video)
+	Delete(video entity.Video)
 	FindAll() []entity.Video
 	CloseDB()
 }
@@ -21,7 +21,7 @@ type database struct {
 func NewVideoRepository() VideoRepository {
 	db, err := gorm.Open("sqlite3", "test.db")
 	if err != nil {
-		panic("failed to connect database")
+		panic("Failed to connect database")
 	}
 	db.AutoMigrate(&entity.Video{}, &entity.Person{})
 	return &database{
@@ -32,24 +32,20 @@ func NewVideoRepository() VideoRepository {
 func (db *database) CloseDB() {
 	err := db.connection.Close()
 	if err != nil {
-		panic("failed to close database")
+		panic("Failed to close database")
 	}
 }
 
-func (db *database) Save(video entity.Video) error {
+func (db *database) Save(video entity.Video) {
 	db.connection.Create(&video)
-	db.connection.NewRecord(video)
-	return nil
 }
 
-func (db *database) Update(video entity.Video) error {
+func (db *database) Update(video entity.Video) {
 	db.connection.Save(&video)
-	return nil
 }
 
-func (db *database) Delete(video entity.Video) error {
+func (db *database) Delete(video entity.Video) {
 	db.connection.Delete(&video)
-	return nil
 }
 
 func (db *database) FindAll() []entity.Video {
