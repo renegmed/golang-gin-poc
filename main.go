@@ -30,7 +30,7 @@ var (
 // @name Authorization
 func main() {
 
-	// Programatically set swagger info
+	// Swagger 2.0 Meta Information
 	docs.SwaggerInfo.Title = "Pragmatic Reviews - Video API"
 	docs.SwaggerInfo.Description = "Pragmatic Reviews - Youtube Video API."
 	docs.SwaggerInfo.Version = "1.0"
