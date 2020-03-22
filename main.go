@@ -34,9 +34,9 @@ func main() {
 	docs.SwaggerInfo.Title = "Pragmatic Reviews - Video API"
 	docs.SwaggerInfo.Description = "Pragmatic Reviews - Youtube Video API."
 	docs.SwaggerInfo.Version = "1.0"
-	docs.SwaggerInfo.Host = "localhost:5000"
+	docs.SwaggerInfo.Host = "pragmatic-video-app.herokuapp.com"
 	docs.SwaggerInfo.BasePath = "/api/v1"
-	docs.SwaggerInfo.Schemes = []string{"http"}
+	docs.SwaggerInfo.Schemes = []string{"https"}
 
 	defer videoRepository.CloseDB()
 
