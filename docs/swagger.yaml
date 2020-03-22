@@ -52,12 +52,12 @@ paths:
       description: Authenticates a user and provides a JWT to Authorize API calls
       operationId: Authentication
       parameters:
-      - description: User credentials
+      - description: Username
         in: formData
         name: username
         required: true
         type: string
-      - description: User credentials
+      - description: Password
         in: formData
         name: password
         required: true
