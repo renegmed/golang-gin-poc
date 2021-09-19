@@ -1,9 +1,10 @@
 package controller
 
 import (
+	"golang-gin-poc/dto"
+	"golang-gin-poc/service"
+
 	"github.com/gin-gonic/gin"
-	"gitlab.com/pragmaticreviews/golang-gin-poc/dto"
-	"gitlab.com/pragmaticreviews/golang-gin-poc/service"
 )
 
 type LoginController interface {

@@ -1,8 +1,8 @@
 package service
 
 import (
-	"gitlab.com/pragmaticreviews/golang-gin-poc/entity"
-	"gitlab.com/pragmaticreviews/golang-gin-poc/repository"
+	"golang-gin-poc/entity"
+	"golang-gin-poc/repository"
 )
 
 type VideoService interface {

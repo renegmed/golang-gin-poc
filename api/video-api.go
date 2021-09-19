@@ -3,9 +3,10 @@ package api
 import (
 	"net/http"
 
+	"golang-gin-poc/controller"
+	"golang-gin-poc/dto"
+
 	"github.com/gin-gonic/gin"
-	"gitlab.com/pragmaticreviews/golang-gin-poc/controller"
-	"gitlab.com/pragmaticreviews/golang-gin-poc/dto"
 )
 
 type VideoApi struct {

@@ -4,9 +4,10 @@ import (
 	"net/http"
 	"strconv"
 
+	"golang-gin-poc/entity"
+	"golang-gin-poc/service"
+
 	"github.com/gin-gonic/gin"
-	"gitlab.com/pragmaticreviews/golang-gin-poc/entity"
-	"gitlab.com/pragmaticreviews/golang-gin-poc/service"
 	"gopkg.in/go-playground/validator.v9"
 )
 

@@ -3,13 +3,14 @@ package main
 import (
 	"os"
 
+	"golang-gin-poc/api"
+	"golang-gin-poc/controller"
+	"golang-gin-poc/docs" // Swagger generated files
+	"golang-gin-poc/middlewares"
+	"golang-gin-poc/repository"
+	"golang-gin-poc/service"
+
 	"github.com/gin-gonic/gin"
-	"gitlab.com/pragmaticreviews/golang-gin-poc/api"
-	"gitlab.com/pragmaticreviews/golang-gin-poc/controller"
-	"gitlab.com/pragmaticreviews/golang-gin-poc/docs" // Swagger generated files
-	"gitlab.com/pragmaticreviews/golang-gin-poc/middlewares"
-	"gitlab.com/pragmaticreviews/golang-gin-poc/repository"
-	"gitlab.com/pragmaticreviews/golang-gin-poc/service"
 
 	swaggerFiles "github.com/swaggo/files"     // swagger embed files
 	ginSwagger "github.com/swaggo/gin-swagger" // gin-swagger middleware

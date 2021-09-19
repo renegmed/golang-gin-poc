@@ -1,9 +1,10 @@
 package repository
 
 import (
+	"golang-gin-poc/entity"
+
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
-	"gitlab.com/pragmaticreviews/golang-gin-poc/entity"
 )
 
 type VideoRepository interface {

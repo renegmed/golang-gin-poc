@@ -1,10 +1,11 @@
 package service
 
 import (
+	"golang-gin-poc/entity"
+	"golang-gin-poc/repository"
+
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
-	"gitlab.com/pragmaticreviews/golang-gin-poc/entity"
-	"gitlab.com/pragmaticreviews/golang-gin-poc/repository"
 )
 
 const (
