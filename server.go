@@ -1,9 +1,10 @@
 package main
 
 import (
+	"golang-gin-poc/controller"
+	"golang-gin-poc/service"
+
 	"github.com/gin-gonic/gin"
-	"gitlab.com/pragmaticreviews/golang-gin-poc/controller"
-	"gitlab.com/pragmaticreviews/golang-gin-poc/service"
 )
 
 var (
